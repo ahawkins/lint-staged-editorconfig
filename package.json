@@ -1,0 +1,39 @@
+{
+	"name": "lint-staged-editorconfig",
+	"version": "0.1.0",
+	"description": "Integrate .editorconfig with lint-staged",
+	"main": "lib/index.js",
+	"repository": "https://github.com/ahawkins/lint-staged-editorconfig",
+	"author": "Adam Hawkins <adam@hawkins.io>",
+	"license": "MIT",
+	"private": false,
+	"devDependencies": {
+		"@commitlint/cli": "^11.0.0",
+		"@commitlint/config-conventional": "^11.0.0",
+		"husky": "^4.3.5",
+		"lint-staged": "^10.5.3",
+		"prettier": "^2.2.1"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	},
+	"scripts": {
+		"test": "jest",
+		"check": "bin/lint-staged-editorconfig"
+	},
+	"dependencies": {
+		"editorconfig": "^0.15.3",
+		"ignore": "^5.1.8",
+		"micromatch": "^4.0.2",
+		"tap": "^14.11.0"
+	},
+	"lint-staged": {
+		"*": [
+			"yarn run --silent check",
+			"prettier --write"
+		]
+	}
+}

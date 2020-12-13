@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+const path = require("path");
+const fs = require("fs");
+const tap = require("tap");
+const editorconfig = require("editorconfig");
+const ignore = require("ignore");
+
+const ignored = ignore().add([
+	".editorconfig",
+	".editorconfigignore",
+	".gitmodules",
+	".gitattributes",
+]);
+
+if (fs.existsSync(".editorconfigignore")) {
+	ignored.add(fs.readFileSync(".editorconfigignore").toString());
+}
+
+const files = process.argv.slice(2);
+
+const relative = files.map((p) => path.relative(process.cwd(), p));
+
+for (file of relative) {
+	const rules = editorconfig.parseSync(file);
+	tap.ok(Object.keys(rules).length > 0, `${file} covered`);
+}
