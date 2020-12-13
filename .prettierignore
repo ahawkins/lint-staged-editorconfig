@@ -1,5 +1,10 @@
 .gitmodules
 .editorconfig
+.editorconfigignore
 .prettierignore
+*.bats
+test/**/*.bash
 vendor
 yarn.lock
+test/fixtures
+

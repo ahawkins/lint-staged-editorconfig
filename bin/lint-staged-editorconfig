@@ -21,7 +21,7 @@ const files = process.argv.slice(2);
 
 const relative = files.map((p) => path.relative(process.cwd(), p));
 
-for (file of relative) {
+for (file of ignored.filter(relative)) {
 	const rules = editorconfig.parseSync(file);
 	tap.ok(Object.keys(rules).length > 0, `${file} covered`);
 }

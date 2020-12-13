@@ -21,7 +21,8 @@
 		}
 	},
 	"scripts": {
-		"test": "jest",
+		"bats": "env LINT_STAGED_EDITORCONFIG=$PWD/bin/lint-staged-editorconfig bats",
+		"test": "yarn run --slient bats test",
 		"check": "bin/lint-staged-editorconfig"
 	},
 	"dependencies": {
@@ -31,6 +32,7 @@
 		"tap": "^14.11.0"
 	},
 	"lint-staged": {
+		"*_test.bats": "yarn run --silent bats",
 		"*": [
 			"yarn run --silent check",
 			"prettier --write"
