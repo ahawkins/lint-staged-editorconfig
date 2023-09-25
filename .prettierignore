@@ -2,6 +2,7 @@
 .editorconfig
 .editorconfigignore
 .prettierignore
+.gitignore
 *.bats
 test/**/*.bash
 vendor
