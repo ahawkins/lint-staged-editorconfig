@@ -11,7 +11,7 @@
 		"@commitlint/cli": "^17.0.0",
 		"@commitlint/config-conventional": "^17.0.0",
 		"husky": "^4.3.5",
-		"lint-staged": "^10.5.3",
+		"lint-staged": "^14.0.0",
 		"prettier": "^2.2.1"
 	},
 	"husky": {
